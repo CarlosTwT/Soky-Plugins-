@@ -26,17 +26,16 @@ export default {
 
       await sock.sendFThumb(m.chat, global.set.wm, ca, yt[0].thumbnail, yt[0].url, m)
 
-      const response = await got.post("https://submagic-free-tools.fly.dev/api/youtube-info", {
+      let response = await got.post("https://submagic-free-tools.fly.dev/api/youtube-info", {
         json: {
           "url": yt[0].url
         }
-      }).json();
+      }).json()
 
-      let ns = response.formats.length
       let xSize = Func.sizeLimit('100', global.set.max_upload)
       if (xSize.oversize) return m.reply(`El tamaño del archivo (100 MB) es demasiado grande; descárguelo usted mismo a través de este enlace : ${yt[0].url}`)
 
-      await sock.sendMessage(m.chat, { audio: { url: response.formats[ns - 3].url }, mimetype: "audio/mpeg" }, { quoted: m })
+      await sock.sendMessage(m.chat, { audio: { url: response.formats[0].url }, mimetype: "audio/mpeg" }, { quoted: m })
 
     } catch (e) {
       console.log(e)
