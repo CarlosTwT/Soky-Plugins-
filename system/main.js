@@ -79,7 +79,7 @@ async function start() {
     })
 
     store.bind(sock.ev)
-    await Client({ sock, store })
+    await Client(sock, store )
     global.sock = sock
     
     loadPluginFiles(pluginFolder, pluginFilter, {
