@@ -77,6 +77,7 @@ async function start() {
         syncFullHistory: false,
         markOnlineOnConnect: true
     })
+    
 
     store.bind(sock.ev)
     await Client(sock, store)
