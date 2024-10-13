@@ -18,7 +18,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@StarlightsTeam/Scraper": "github:StarlightsTeam/StarlightsTeam-Scraper",
-    "@whiskeysockets/baileys": "^6.7.7",
+    "@whiskeysockets/baileys": "^6.7.8",
     "archiver": "^6.0.1",
     "awesome-phonenumber": "^6.9.0",
     "chalk": "^5.3.0",

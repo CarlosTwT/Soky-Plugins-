@@ -3,7 +3,6 @@ const { baileys, makeWASocket, fetchLatestBaileysVersion, useMultiFileAuthState,
 import pino from 'pino';
 import { Client, Serialize } from "../../system/lib/serialize.js";
 import { loadPluginFiles } from "../../system/lib/plugins.js";
-import qrcode from 'qrcode';
 import helper from '../../system/lib/helper.js';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
@@ -21,16 +20,11 @@ const store = makeInMemoryStore({
 const pluginFolder = helper.__dirname(join(__dirname, "../../plugins"));
 const pluginFilter = (filename) => /\.js$/.test(filename);
 
-let qrGenerated = false;
 
-export const serBotQR = async(m, sock) => {
+export const startSubBotFromSession = async (sessionPath, sock) => {
   try {
-    const { saveCreds, state} = await useMultiFileAuthState(`./storage/temp/jadibots/${m.sender + Date.now()}`);
+    const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
     const { version } = await fetchLatestBaileysVersion();
-
-    if (state.creds.accountSyncCounter != 0) {
-      return m.reply('*No puedes ser sub-bot por que ya eres uno* 🥸');
-    }
 
     let conn = makeWASocket({
       logger: pino({ level: 'silent' }), // Nivel del log.
@@ -68,26 +62,18 @@ export const serBotQR = async(m, sock) => {
       const { qr, connection, lastDisconnect } = update;
       
       if (lastDisconnect?.error) {
-        qrGenerated = false;
-        serBotQR();
-      }
-
-      if (qr && !qrGenerated) {  
-        qrGenerated = true; 
-        let qrCodeUrl = await qrcode.toBuffer(qr, { scale: 8 });
-        const qrMessage = await sock.sendMessage(m.chat, { image: qrCodeUrl, caption: '*Escanea este Código QR para convertirte en SockAi(sub-Bot)*.' }, { quoted: m });
-        
-        setTimeout(async () => await sock.sendMessage(m.chat, { delete: qrMessage.key }), 70000);
+        console.error(lastDisconnect.error?.output?.statusCode);
+        startSubBotFromSession(sessionPath, sock);
       }
 
       if (connection === 'open') {
-        m.reply('*Has sido conectado exitosamente como sub-bot* 🥳');
+        console.log('conex')
+        // await sock.sendMessage(m.chat, { text: '*Has sido conectado exitosamente como sub-bot* 🥳' });
       }
     });
 
 
     store.bind(conn.ev);
-    conn.ev.on('creds.update', saveCreds); 
 
     conn.ev.on("contacts.update", (update) => {
       for (let contact of update) {
@@ -110,31 +96,30 @@ export const serBotQR = async(m, sock) => {
       const msg = await Serialize(conn, message.messages[0]);
       if (store.groupMetadata && Object.keys(store.groupMetadata).length === 0)
       store.groupMetadata = await conn.groupFetchAllParticipating();
-      await (await import(`./handler.js`)).handler(conn, msg, message);
+      await (await import(`./../../system/handler.js`)).handler(conn, msg, message);
     });
 
     conn.ev.on("group-participants.update", async (message) => {
-    await (await import(`./handler.js?v=${Date.now()}`)).participantsUpdate(message.id, message.participants[0], message.action);
+    await (await import(`./../../system/handler?v=${Date.now()}`)).participantsUpdate(message.id, message.participants[0], message.action);
     });
 
     conn.ev.on("groups.update", async (update) => {
-    await (await import(`./handler.js?v=${Date.now()}`)).groupsUpdate(update);
+    await (await import(`./../../system/handler.js?v=${Date.now()}`)).groupsUpdate(update);
     });
 
     conn.ev.on("call", async (json) => {
-    await (await import(`./handler.js?v=${Date.now()}`)).rejectCall(json);
+    await (await import(`./../../system/handler.js?v=${Date.now()}`)).rejectCall(json);
     });
 
     conn.ev.on("presence.update", async (presenceUpdateEvent) => {
     try {
-      await (await import(`./handler.js?v=${Date.now()}`)).presenceUpdate(presenceUpdateEvent);
+      await (await import(`./../../system/handler.js?v=${Date.now()}`)).presenceUpdate(presenceUpdateEvent);
     } catch (error) {
       console.error("Error handling presence update:", error);
     }
     });
 
   } catch (error) {
-    console.error('Error starting subbot: ', error);
-    m.reply('*Ocurrió un error al intentar conectarte como sub-bot :(*');  
+    console.error(`error al iniciar el sub-bot desde la sesión en ${sessionPath}: `, error);
   }
-}
+};

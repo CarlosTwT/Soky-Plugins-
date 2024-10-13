@@ -5,7 +5,6 @@ export default {
   tags: 'JadiBots',
   command: ['serbot', 'serbotqr'],
   description: 'Conviertete en un subBot de SOCK AI',
-  example: Func.example('%p', '%cmd'),
   limit: true,
   run: async(m, { sock, args }) => {
     await serBotQR(m, sock)
