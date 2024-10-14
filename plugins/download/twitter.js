@@ -109,7 +109,7 @@ async function twitterDLv2(url) {
     });
 
     if (result.length === 0) {
-      return { status: false, message: "Tidak dapat menemukan video" };
+      return { status: false, message: "error" };
     }
 
     const sortedResult = result.sort((a, b) => b.height - a.height);
