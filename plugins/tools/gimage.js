@@ -14,7 +14,6 @@ export default {
     gimage += `*-* *query:* ${text}\n`
     gimage += `*-* *Sumber:* Google`
     sock.sendMessage(m.chat, { image: { url: image }, caption: gimage }, { quoted: m })
-    m.reply(`¿Quieres buscar más imágenes?`)
   }
 }
 
