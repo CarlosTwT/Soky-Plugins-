@@ -5,7 +5,6 @@ export default {
   tags: 'download',
   command: ['letra', 'lyrics'],
   description: 'Buscar la letra de una canción',
-  example: '%p %cmd Despacito',
   register: true,
   limit: true,
   run: async (m, { sock, text }) => {
