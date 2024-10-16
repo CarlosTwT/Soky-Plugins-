@@ -2,10 +2,10 @@ import axios from 'axios';
 
 export default {
   name: 'letra',
-  tags: ['download'],
+  tags: 'download',
   command: ['letra', 'lyrics'],
   description: 'Buscar la letra de una canción',
-  example: '%prefix%command Despacito',
+  example: '%p %cmd Despacito',
   register: true,
   limit: true,
   run: async (m, { sock, text }) => {
