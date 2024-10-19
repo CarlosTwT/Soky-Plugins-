@@ -1,4 +1,4 @@
-import yts from 'yt-search';
+/* import yts from 'yt-search';
 
 export default {
 name: 'youtubevideo',
@@ -45,3 +45,34 @@ name: 'youtubevideo',
     }
   }
 }
+*/
+import { ytmp4 } from 'ruhend-scraper';
+
+export default {
+  name: 'ytmp4',
+  tags: 'download',
+  command: ['ytmp4', 'ytv'],
+  description: 'Descargar video de YouTube',
+  example: Func.example('%p', '%cmd', 'https://youtu.be/MvsAesQ-4zA'),
+  limit: true,
+  premium: false,
+  run: async (m, { sock, text, prefix, command }) => {
+    if (!text) return m.reply(`Ingresa el enlace de YouTube ${m.prefix+command} https://youtu.be/MvsAesQ-4zA`);
+    try {
+      const { title, video, author, description, duration, views, upload, thumbnail } = await ytmp4(text);
+      let caption = `[ YouTube Play ]*\n\n`;
+      caption += `*-* *Título* : ${title}\n`;
+      caption += `*-* *Autor* : ${author}\n`;
+      caption += `*-* *Descripción* : ${description}\n`;
+      caption += `*-* *duración* : ${duration}\n`;
+      caption += `*-* *título* : ${views}\n`;
+      caption += `*-* *Upload* : ${upload}`;
+      
+      await sock.sendFThumb(m.chat, global.set.wm, caption, thumbnail, text, m); 
+      await sock.sendMessage(m.chat, { document: { url: video },  mimetype: 'video/mp4', fileName: title + '.mp4' }, { quoted: m });
+    } catch (error) {
+      console.error(error);
+      m.reply('Ocurrió un error al procesar el video. Por favor, intenta con otro enlace o más tarde.');
+    }
+  }
+};
