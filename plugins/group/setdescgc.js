@@ -1,6 +1,6 @@
 export default {
-  name: 'setdescriptiongroup',
-  tags: ['group'],
+  name: 'setdescgc',
+  tags: 'group',
   command: ['setdescgc', 'setdescriptiongroup'],
   description: 'Establece la descripción del grupo',
   example: Func.example('%p', '%cmd', 'texto'),

@@ -1,10 +1,10 @@
 export default {
-  name: 'instagram',
+  name: 'instagramv2',
   tags: 'download',
-  command: ['instagram', 'ig'],
+  command: ['instagramv2', 'igpost'],
   description: 'Descargar vídeos/imágenes de Instagram',
   example: Func.example('%p', '%cmd', 'https://www.instagram.com/reel/C8em8oaBWG4/?igsh=M20weThtamoxOWkw'),
-  limit: true,
+  limit: false,
   run: async (m, { sock, args }) => {
     if (!args[0].match('instagram.com')) return m.reply(global.status.invalid)
     m.reply(global.status.wait)

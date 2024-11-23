@@ -6,7 +6,7 @@ export default {
   command: ['ssweb', 'capturaweb'],
   description: 'Captura de pantalla de un sitio web',
   example: Func.example('%p', '%cmd', 'https://www.ejemplo.com'),
-  limit: true,
+  limit: false,
   run: async (m, { sock, text }) => {
     if (!text) return m.reply('Uso: {p}ssweb `<url>`\n\n*Descripción:*\n- *<url>*: La URL del sitio web del que deseas capturar una imagen.');
 

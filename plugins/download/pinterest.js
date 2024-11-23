@@ -8,7 +8,7 @@ export default {
   command: ['pin', 'pinterest'],
   description: 'Encuentra tus imagenes favoritas aquí',
   example: '',
-  // limit: true,
+  limit: false,
   run: async (m, { text }) => {
     if (!text) {
       return m.reply('Acción mal hecha, ejemplo: /pin gatos');

@@ -23,10 +23,10 @@ export default {
           let album = await downloadAlbum(isSpotifyUrl[0]);
           let img = await (await fetch(`${album.metadata.cover}`)).buffer();
           let txt = `* S P O T I F Y  -  D O W N L O A D*\n\n`;
-          txt += `✩  *Album* : ${album.metadata.title}\n`;
-          txt += `✩   *Artista* :${album.metadata.artists}\n`;
-          txt += `✩   *Publicado* : ${album.metadata.releaseDate}\n`;   
-          txt += `✩   *Tracks totales* : ${album.trackList.length}\n\n`;   
+          txt += `  *Album* : ${album.metadata.title}\n`;
+          txt += `   *Artista* :${album.metadata.artists}\n`;
+          txt += `   *Publicado* : ${album.metadata.releaseDate}\n`;   
+          txt += `   *Tracks totales* : ${album.trackList.length}\n\n`;   
           txt += `*-by Soky AI*`;
           
           await sock.sendMessage(m.chat, { image: img, caption: txt }, { quoted: m });
@@ -43,11 +43,11 @@ export default {
           let dlspoty = track.audioBuffer;
           let img = await (await fetch(`${track.imageUrl}`)).buffer();
           let txt = `* S P O T I F Y  -  D O W N L O A D*\n\n`;
-          txt += `✩   *Título* : ${track.title}\n`;
-          txt += `✩   *Artista* : ${track.artists}\n`;
-          txt += `✩   *Duración* : ${track.duration}\n`;
-          txt += `✩   *Album* : ${track.album.name}\n`;                 
-          txt += `✩   *Publicado* : ${track.album.releasedDate}\n\n`;   
+          txt += `   *Título* : ${track.title}\n`;
+          txt += `   *Artista* : ${track.artists}\n`;
+          txt += `   *Duración* : ${track.duration}\n`;
+          txt += `   *Album* : ${track.album.name}\n`;                 
+          txt += `   *Publicado* : ${track.album.releasedDate}\n\n`;   
           txt += `*- by Soky AI*`;
           
           await sock.sendMessage(m.chat, { image: img, caption: txt }, { quoted: m });
@@ -65,9 +65,9 @@ export default {
           let playlistInfoByID = await infos.getPlaylist(playlistId);
           let tracks = playlistInfoByID.tracks.items;
           let img = await (await fetch(`${playlistInfoByID.images[0].url}`)).buffer();
-          let txt = `*乂  S P O T I F Y  -  D O W N L O A D*\n\n`;
-          txt += `✩   *Playlist* : ${playlistInfoByID.name}\n`;
-          txt += `✩   *Tracks totales* : ${tracks.length}\n\n`;
+          let txt = `* S P O T I F Y  -  D O W N L O A D*\n\n`;
+          txt += `   *Playlist* : ${playlistInfoByID.name}\n`;
+          txt += `   *Tracks totales* : ${tracks.length}\n\n`;
           txt += `*- by Soky AI*`;
           
           await sock.sendMessage(m.chat, { image: img, caption: txt }, { quoted: m });
@@ -90,12 +90,12 @@ export default {
         let searchTrack = await downloadTrack(text);
         let dlspoty = searchTrack.audioBuffer;
         let img = await (await fetch(`${searchTrack.imageUrl}`)).buffer();
-        let txt = `*乂  S P O T I F Y  -  D O W N L O A D*\n\n`;
-        txt += `✩   *Título* : ${searchTrack.title}\n`;
-        txt += `✩   *Artista* : ${searchTrack.artists}\n`;
-        txt += `✩   *Duración* : ${searchTrack.duration}\n`;
-        txt += `✩   *Album* : ${searchTrack.album.name}\n`;                 
-        txt += `✩   *Publicado* : ${searchTrack.album.releasedDate}\n\n`;   
+        let txt = `* S P O T I F Y  -  D O W N L O A D*\n\n`;
+        txt += `   *Título* : ${searchTrack.title}\n`;
+        txt += `   *Artista* : ${searchTrack.artists}\n`;
+        txt += `   *Duración* : ${searchTrack.duration}\n`;
+        txt += `   *Album* : ${searchTrack.album.name}\n`;                 
+        txt += `   *Publicado* : ${searchTrack.album.releasedDate}\n\n`;   
         txt += `*- by Soky AI*`;
         
         await sock.sendMessage(m.chat, { image: img, caption: txt }, { quoted: m });

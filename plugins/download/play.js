@@ -53,7 +53,7 @@ export default {
   command: ['play'],
   description: 'Reproduce música de YouTube',
   example: Func.example('%p', '%cmd', 'photograph'),
-  limit: true,
+  limit: false,
   run: async(m, { sock, text, command }) => {
     if (!text) return m.reply(Func.example(m.prefix, command, 'photograph'));
     

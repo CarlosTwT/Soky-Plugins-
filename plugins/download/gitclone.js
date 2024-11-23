@@ -4,7 +4,7 @@ export default {
   command: ['gitclone', 'git'],
   description: 'Descarga el archivo del repositorio desde github',
   example: Func.example('%p', '%cmd', 'link github??'),
-  limit: true,
+  limit: false,
   run: async(m, { sock, args }) => {
     let regex = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     if (!regex.test(args[0])) return m.reply('Repositorios no encontrados')

@@ -2,11 +2,11 @@ import axios from 'axios';
 
 export default {
   name: 'letra',
-  tags: 'download',
+  tags: ['download'],
   command: ['letra', 'lyrics'],
   description: 'Buscar la letra de una canción',
   register: true,
-  limit: true,
+  limit: false,
   run: async (m, { sock, text }) => {
     if (!text) return sock.sendMessage(m.chat, { text: `Proporciona el nombre de la canción para buscar la letra. Ejemplo: ${m.prefix}letra Despacito` }, { quoted: m });
     
@@ -21,8 +21,8 @@ export default {
       const lyricsResponse = await axios.get(`https://deliriussapi-oficial.vercel.app/search/lyrics?url=${encodeURIComponent(lyricsUrl)}`);
       
       if (lyricsResponse.data && lyricsResponse.data.lyrics) {
-        const responseText = `Letra de "${geniusData[0].title}" por ${geniusData[0].artist}:\n\n${lyricsResponse.data.lyrics}`;
-        return sock.sendMessage(m.chat, { text: responseText }, { quoted: m });
+        const responseText = `Letra de "${geniusData[0].title}" por ${geniusData[0].artist.name}:\n\n${lyricsResponse.data.lyrics}`;
+        return sock.sendFThumb(m.chat, global.set.wm, responseText, geniusData[0].image, null, m);
       } else {
         return sock.sendMessage(m.chat, { text: 'No se pudo obtener la letra de la canción.' }, { quoted: m });
       }

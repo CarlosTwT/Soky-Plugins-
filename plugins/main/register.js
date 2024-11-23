@@ -36,6 +36,6 @@ export default {
     
     let riyo = `*[ Notificaciones del sistema ]*\n\n`
     riyo += `*${m.pushName}* Se ha Registrado\n\n*-* *Nombre* : ${name}\n*-* *Edad* : ${age} Años\n*-* *Sn* : ${sn}\n\n`
-    await sock.reply(global.media.scm, riyo, null)
+//    await sock.reply(global.media.scm, riyo, null)
   }
 }

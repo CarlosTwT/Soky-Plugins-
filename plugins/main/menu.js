@@ -2,8 +2,7 @@ import os from 'os'
 import fs from 'fs'
 
 let menu = {
-  before: `Hola @%user %ucapan!
-Por favor usa este bot con precaución.
+  before: `Hola @%user %ucapan! Soy Soky Ai.
 
 > *-* *Version* : %version
 > *-* *Source* : https://github.com/CarlosTwT

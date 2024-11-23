@@ -4,7 +4,7 @@ export default {
   command: ['tiktok', 'tiktokslide', 'tt', 'ttslide'],
   description: 'Download tiktok videos/images',
   example: Func.example('%p', '%cmd', 'https://vt.tiktok.com/ZSYaEoF55'),
-  limit: true,
+  limit: false,
   run: async (m, { sock, args }) => {
     if (!args[0].match('tiktok.com')) return m.reply(global.status.invalid)
     m.reply(global.status.wait)
@@ -25,7 +25,7 @@ export default {
           const sd_tt = await res.data.play
           const ttvideo = await sock.sendMessage(m.chat, { video: { url: 'https://www.tikwm.com' + sd_tt }, caption: teks }, { quoted: m })
           const aud_tt = await res.data.music_info
-          sock.sendMessage(m.chat, { audio: { url: aud_tt.play, mimetype: "audio/mpeg", ptt: true }}, { quoted: ttvideo })
+          sock.sendMessage(m.chat, { audio: { url: aud_tt.play, mimetype: "audio/mpeg", ptt: false }}, { quoted: ttvideo })
         }
       } catch (e) {
         console.log(e)

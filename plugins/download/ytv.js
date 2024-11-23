@@ -55,7 +55,7 @@ export default {
   command: ['ytmp4', 'ytv'],
   description: 'Descargar video de YouTube',
   example: Func.example('%p', '%cmd', 'https://youtu.be/MvsAesQ-4zA'),
-  limit: true,
+  limit: false,
   run: async (m, { sock, text, prefix, command }) => {
     if (!text) return m.reply(Func.example(m.prefix, command, 'spiral by longman'));
     m.reply(global.status.wait);

@@ -1,12 +1,12 @@
-import { downloadFacebookVideo } from "../../storage/scarper/facebook.js"
+import { downloadFacebookVideo } from "../../storage/script/facebook.js"
 
 export default {
-  name: 'Facebook',
-  tags: 'Download',
+  name: 'facebook',
+  tags: 'download',
   command: ['facebook', 'fb'],
   description: 'Descarga vídeos de Facebook',
   example: Func.example('%p', '%cmd', 'https://www.facebook.com/100010929794713/posts/1885825845125057'),
-  limit: true,
+  limit: false,
   run: async(m, { sock, args }) => {
     if (!args[0].match('facebook.com')) {
       return await m.reply(global.status.invalid);

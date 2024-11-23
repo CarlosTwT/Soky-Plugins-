@@ -1,6 +1,6 @@
 export default {
   name: 'tagall',
-  tags: ['group'],
+  tags: 'group',
   command: ['tagall'],
   description: 'Etiqueta a todos los miembros del grupo',
  example: Func.example('%p', '%cmd', 'texto'),

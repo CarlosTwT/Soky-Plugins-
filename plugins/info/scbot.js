@@ -10,6 +10,6 @@ export default {
     teks += `*-* Características generales:\n`
     teks += `*-* No botones\n*-* Rápido y fluido\n*-* Anti Ban\n*-* Simple\n*-* Eficiente\n*-* Actualizado siempre.\n`
     teks += global.set.footer
-    sock.sendFThumb(m.chat, global.set.wm, teks, "https://tmpfiles.org/dl/14254231/tmp.jpg", global.media.swa, m)
+    sock.sendFThumb(m.chat, global.set.wm, teks, "https://pomf2.lain.la/f/b2g4zhj6.jpg", global.media.swa, m)
   }
 }

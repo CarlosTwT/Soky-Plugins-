@@ -6,7 +6,7 @@ export default {
   command: ['mediafire'],
   description: 'Descarga archivos de Mediafire',
   example: Func.example('%p', '%cmd', 'https://mediafire.com/yourfile'),
-  limit: true,
+  limit: false,
   run: async(m, { sock, text, command }) => {
     const q = text; // Asigna el texto del comando a la variable q
     if (!q) return m.reply('¿Dónde está el enlace?');
