@@ -305,7 +305,7 @@ export async function before(m) {
 			  pp = 'https://i.ibb.co/m53WF9N/avatar-contact.png'
 			}
 	          await this.sendMessage(m.chat, { image: { url: pp }, caption: ini_txt, mentions: [m.sender] }, { quoted: m }).then(async () => {
-	        await sock.reply(global.media.scm, `*[ Notificaciones del sistema ]*\n\n${m.pushName} obtiene un nuevo nivel!!`, null)
+	        //await sock.reply(global.media.scm, `*[ Notificaciones del sistema ]*\n\n${m.pushName} obtiene un nuevo nivel!!`, null)
 	      })
 		} catch {
 		  await m.reply(ini_txt)

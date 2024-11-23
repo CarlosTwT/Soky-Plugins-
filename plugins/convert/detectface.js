@@ -31,9 +31,9 @@ export default {
         let json = await api.json();
         let { results } = json;
 
-        let txt = '`乂  D E T E C T - F A C E`\n\n';
-        txt += `	✩  *Forma* : ${results.form}\n`; 
-        txt += `	✩  *Genero* : ${results.gender}\n\n`; 
+        let txt = '`Y O U R - F A C E`\n\n';
+        txt += ` *Forma* : ${results.form}\n`; 
+        txt += ` *Genero* : ${results.gender}\n\n`; 
         txt += `> result face`;
 
         await sock.sendMessage(m.chat, { text: txt }, { quoted: m });

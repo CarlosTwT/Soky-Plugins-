@@ -6,7 +6,7 @@ export default {
   command: ['shorten', 'shortlink', 'shorturl', 'shortenlink'],
   description: 'Acorta una URL usando TinyURL',
   example: Func.example('%p', '%cmd', 'https://example.com'),
-  limit: true,
+  limit: false,
   run: async(m, { sock, text, command }) => {
     if (!text) {
       return m.reply(Func.example(m.prefix, command, 'https://example.com'));

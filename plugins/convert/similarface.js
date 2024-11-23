@@ -31,7 +31,7 @@ export default {
 
         let txt = '`S I M I L A R  -  F A C E`\n\n';
         txt += `*${name}*\n`;
-        txt += `	✩  *similitud* : ${similar}\n\n`;
+        txt += `*similitud* : ${similar}\n\n`;
         txt += ` by Soky Ai`;
 
         await sock.sendMessage(m.chat, { image: { url: image }, caption: txt }, { quoted: m });
