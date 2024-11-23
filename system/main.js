@@ -16,7 +16,6 @@ import { format, promisify, isDeepStrictEqual } from 'util';
 import { plugins, loadPluginFiles, reload, pluginFolder, pluginFilter } from "./lib/plugins.js";
 import { dirname } from 'path';
 import { participantsUpdate } from "./handler.js"
-import { startAllSubBots } from "../storage/serBot/startAllSubBots .js"
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -80,7 +79,7 @@ async function start() {
     })
 
     store.bind(sock.ev)
-    await Client(sock, store)
+    await Client({ sock, store })
     global.sock = sock
     
     loadPluginFiles(pluginFolder, pluginFilter, {
@@ -181,9 +180,6 @@ async function start() {
         });
 
         sock.ev.on("creds.update", saveCreds);
-
-        await startAllSubBots(sock);
-
 
   // add contacts update to store
   sock.ev.on("contacts.update", (update) => {

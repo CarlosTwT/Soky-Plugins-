@@ -1,4 +1,3 @@
-import fs from "fs"
 import path from "path"
 import { fileURLToPath } from "url"
 import { spawn } from "child_process"

@@ -28,7 +28,7 @@ const {
   Mimetype,
 } = (await import("@whiskeysockets/baileys")).default;
 
-export function Client(sock, store ) {
+export function Client({ sock, store }) {
   delete store.groupMetadata
   for (let v in store) {
     sock[v] = store[v]

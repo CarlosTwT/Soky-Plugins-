@@ -9,8 +9,8 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)  
 
 /** settings number **/
-global.owner = ["593991398786", '5214271859535']
-global.pairingNumber = "595987247948" //está con número del bot
+global.owner = ["593991398786"]
+global.pairingNumber = "593986755613" //está con número del bot
 global.write_store = false
 
 /** function to make it more practical **/
@@ -97,15 +97,15 @@ global.thumb2 = 'https://telegra.ph/file/51dbbb9a1e71a021ee457.jpg'
 
 /** mensajes de estado **/
 global.status = Object.freeze({
-  wait: Func.texted('bold', 'Procesando la solicitud... 🚩 .'),
-  invalid: Func.texted('bold', 'URL No valida 🚩'),
+  wait: Func.texted('bold', 'Procesando la solicitud. . .'),
+  invalid: Func.texted('bold', 'URL invalida!'),
   wrong: Func.texted('bold', 'Formato incorrecto!'),
   getdata: Func.texted('bold', 'Scraping metadatos . . .'),
   fail: Func.texted('bold', 'No pude obtener metadatos!'),
   error: Func.texted('bold', 'Ocurrió un error!'),
   errorF: Func.texted('bold', 'Lo siento, esta característica está dando un error.'),
   premium: Func.texted('bold', 'Esto solo es para usuarios premiums.'),
-  limit: Func.texted('bold', 'Su límite diario se ha agotado, no se puede acceder a algunos comandos'),
+  limit: Func.texted('bold', 'Su límite de prueba se ha agotado, no podrá acceder a algunos comandos temporalmente. '),
   owner: Func.texted('bold', 'Este comando es sólo para propietarios.'),
   god: Func.texted('bold', 'Este comando es solo para Carlos'),
   group: Func.texted('bold', 'Este comando solo funcionará en grupos.'),
