@@ -8,7 +8,7 @@ export default {
   example: Func.example('%p', '%cmd', 'https://mediafire.com/yourfile'),
   limit: false,
   run: async(m, { sock, text, command }) => {
-    const q = text; // Asigna el texto del comando a la variable q
+    const q = text;
     if (!q) return m.reply('¿Dónde está el enlace?');
 
     try {
