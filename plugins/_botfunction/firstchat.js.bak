@@ -1,8 +1,0 @@
-export async function before(m) {
-    if (m.chat.endsWith("broadcast") || m.fromMe || m.isGroup || m.isCommand) return
-    let user = db.users[m.sender]
-    let txt = `Hola ${m.pushName} ${m.isOwner ? 'Owner' : 'usuario'}\n\n${user.banned ? `Has sido baneado, contacta al propietario para desbanearte.!` : 'Sigueme en instagram tocando arriba de este texto y disfruta del bot escribiendo .menu, o de la ia escribiendo .ai'}`
-    if (new Date() - user.firstchat < 21600000) return
-    sock.reply(m.chat, txt, m)
-    user.firstchat = new Date * 1
-}
