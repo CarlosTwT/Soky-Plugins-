@@ -10,7 +10,7 @@ const readMore = more.repeat(4001)
 
 /** settings number **/
 global.owner = ["593991398786"]
-global.pairingNumber = "593986755613" //está con número del bot
+global.pairingNumber = "Your_Number" //está con número del bot
 global.write_store = false
 
 /** function to make it more practical **/
