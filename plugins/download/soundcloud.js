@@ -11,7 +11,6 @@ export default {
         if (!text) return m.reply('Por favor, proporciona el nombre de la canción o el artista.')
 
         try {
-            // Realizar la búsqueda en SoundCloud
             const searchResponse = await axios.get("https://deliriussapi-oficial.vercel.app" + "/search/soundcloud", {
                 params: {
                     q: text,
@@ -21,7 +20,6 @@ export default {
 
             const shdata = searchResponse.data.data[0];
 
-            // Realizar la descarga del audio
             const downloadResponse = await axios.get("https://deliriussapi-oficial.vercel.app" + "/download/soundcloud", {
                 params: {
                     url: shdata.link,
@@ -30,7 +28,6 @@ export default {
 
             const downloadres = downloadResponse.data.data;
 
-            // Formatear la información del audio
             const soundcloudt = `*S O U N D C L O U D*\n
 *› Titulo :* ${downloadres.title || "-"}
 *› Artista:* ${downloadres.author.username || "-"}
@@ -39,11 +36,8 @@ export default {
 *› Likes :* ${downloadres.author.likes_count || "-"}
 *› Publicado :* ${new Date(downloadres.author.created_at).toLocaleDateString() || "-"}`;
 
-            // Obtener la imagen
             const imgxd = downloadres.imageURL.replace("t500x500", "t1080x1080") || downloadres.imageURL;
            await sock.sendFThumb(m.chat, global.set.wm, soundcloudt, imgxd, shdata.link, m);
-
-            // Enviar el audio
             await sock.sendMessage(
                 m.chat,
                 {
