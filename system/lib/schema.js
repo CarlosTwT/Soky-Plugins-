@@ -113,7 +113,7 @@ export default function loadDatabase(m) {
         if (!isBoolean(sett.readsw)) sett.readsw = false        
         if (!isBoolean(sett.gconly)) sett.gconly = false
         if (!isBoolean(sett.pconly)) sett.pconly = false
-        if (!isBoolean(sett.self)) sett.self = true
+        if (!isBoolean(sett.self)) sett.self = false
         if (!isBoolean(sett.restrict)) sett.restrict = false
       } else {
         db.settings = {
@@ -123,7 +123,7 @@ export default function loadDatabase(m) {
         readsw: false,
         gconly: false,
         pconly: false,
-        self: true,
+        self: false,
         restrict: false
         }
       }
