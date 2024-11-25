@@ -32,7 +32,7 @@ export default {
       message += `🔒 *Estado IP:* ${result.ipAddress}\n`;
       message += `📅 *Calendario público:* ${result.calendar}\n`;
 
-      if (result.photoProfile !== 'Tidak ada' && result.photoProfile !== 'Not found.') {
+      if (result.photoProfile !== 'Nothing' && result.photoProfile !== 'Not found.') {
         await sock.sendMessage(m.chat, {
           image: { url: result.photoProfile },
           caption: message
